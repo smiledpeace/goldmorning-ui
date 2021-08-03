@@ -8,7 +8,7 @@ GmButton 是一个示例按钮组件
 
 ```js
 import Vue from 'vue';
-import { GmButton } from 'gm-ui';
+import { GmButton } from 'goldmorning-ui';
 
 Vue.use(GmButton);
 ```
@@ -16,6 +16,7 @@ Vue.use(GmButton);
 ## 代码演示
 
 ### 基础用法
+
 ```html
 <gm-button></gm-button>
 ```
@@ -24,9 +25,9 @@ Vue.use(GmButton);
 
 ### Props
 
-| 参数         | 说明     | 类型     | 默认值    |
-| ----------- | -------- | -------- | --------- |
-| type     | 按钮类型 | _string_ | - |
+| 参数 | 说明     | 类型     | 默认值 |
+| ---- | -------- | -------- | ------ |
+| type | 按钮类型 | _string_ | -      |
 
 ### Events
 
