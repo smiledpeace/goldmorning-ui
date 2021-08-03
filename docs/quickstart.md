@@ -4,8 +4,8 @@
 
 ```bash
 # 通过 npm 安装
-npm i gm-ui -S
+npm i goldmoring-ui -S
 
 # 通过 yarn 安装
-yarn add gm-ui
+yarn add goldmoring-ui
 ```

@@ -1,15 +1,15 @@
 module.exports = {
-  name: 'gm-ui',
+  name: 'goldmoring-ui',
   build: {
     css: {
       preprocessor: 'less',
     },
     site: {
-      publicPath: '/gm-ui/',
+      publicPath: '/goldmoring-ui/',
     },
   },
   site: {
-    title: 'gm-ui',
+    title: 'goldmoring-ui',
     logo: 'https://img.yzcdn.cn/vant/logo.png',
     nav: [
       {
