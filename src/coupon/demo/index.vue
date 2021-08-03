@@ -1,0 +1,71 @@
+<!--
+ *Author: Smiledpeace
+-->
+<template>
+  <demo-block title="基础用法">
+    <div class="color-white p12">
+      <coupon
+        unit="嘿"
+        amount="0.4"
+        title="卖金优惠券"
+        expired="2020.05.21-2021.06.31"
+        describe="最高20克，第1单可用"
+      />
+    </div>
+  </demo-block>
+
+  <demo-block title="状态">
+    <div class="color-white p12">
+      <coupon
+        class="mb8"
+        state="可交易"
+        amount="0.3"
+        title="卖金优惠券"
+        expired="2020.05.21-2021.06.31"
+      />
+    </div>
+  </demo-block>
+
+  <demo-block title="状态">
+    <div class="color-white p12">
+      <coupon
+        class="mb8"
+        state="可交易"
+        amount="0.3"
+        is-check-box
+        v-model="checked"
+        @change="onChange"
+        title="卖金优惠券"
+        expired="2020.05.21-2021.06.31"
+      />
+    </div>
+  </demo-block>
+</template>
+
+<script>
+import { ref } from 'vue';
+
+export default {
+  name: 'CouponDemo',
+  props: {},
+  setup() {
+    const checked = ref(false);
+    function onChange(res) {
+      console.log(res);
+    }
+    return {
+      checked,
+      onChange,
+    };
+  },
+};
+</script>
+
+<style lang="less" rel="stylesheet/less" scoped>
+.mb8 {
+  margin-bottom: 8px;
+}
+.p12 {
+  padding: 12px;
+}
+</style>

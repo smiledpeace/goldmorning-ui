@@ -33,6 +33,10 @@ module.exports = {
             title: 'GmButton 按钮',
           },
           {
+            path: 'coupon',
+            title: 'Coupon 优惠券',
+          },
+          {
             path: 'order-input',
             title: 'OrderInput 校验输入框',
           },
