@@ -14,7 +14,7 @@
     </div>
   </demo-block>
 
-  <demo-block title="状态">
+  <demo-block title="可交易状态">
     <div class="color-white p12">
       <coupon
         class="mb8"
@@ -26,7 +26,7 @@
     </div>
   </demo-block>
 
-  <demo-block title="状态">
+  <demo-block title="isCheckBox">
     <div class="color-white p12">
       <coupon
         class="mb8"
@@ -36,6 +36,20 @@
         v-model="checked"
         @change="onChange"
         title="卖金优惠券"
+        expired="2020.05.21-2021.06.31"
+      />
+    </div>
+  </demo-block>
+
+  <demo-block title="参数变化">
+    <div class="color-white p12">
+      <coupon
+        state="可成交"
+        amount="0.5"
+        symbol="-"
+        btn-text="去消费"
+        title="卖金优惠券"
+        unit="元/g"
         expired="2020.05.21-2021.06.31"
       />
     </div>
@@ -53,9 +67,13 @@ export default {
     function onChange(res) {
       console.log(res);
     }
+    function onClick(res) {
+      console.log(res);
+    }
     return {
       checked,
       onChange,
+      onClick,
     };
   },
 };

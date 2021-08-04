@@ -23,13 +23,14 @@
       </div>
       <!--   是否使用check   -->
       <template v-if="isCheckBox">
-        <span class="coupon-checkbox" :class="{ checked: modelValue }"></span>
         <input
           type="checkbox"
           class="coupon-input-checkbox"
           @change="onChange"
           :value="modelValue"
+          :disabled="disabled"
         />
+        <span class="coupon-checkbox" :class="{ checked: modelValue }"></span>
       </template>
 
       <button class="coupon-btn" @click="onClick" v-else>{{ btnText }}</button>
@@ -63,6 +64,7 @@ export default {
     },
     isCheckBox: Boolean,
     modelValue: Boolean,
+    disabled: Boolean,
   },
   emits: ['update:modelValue', 'change', 'click'],
   setup(props, { emit }) {
@@ -108,7 +110,7 @@ export default {
     right: 0;
     bottom: 0;
     border: 1px solid #eee;
-    border-radius: 4px;
+    border-radius: 6px;
     transition: all 0.3s ease;
   }
   &.checked {
@@ -269,5 +271,8 @@ export default {
 .coupon-input-checkbox {
   position: absolute;
   visibility: hidden;
+  &:disabled + .coupon-checkbox {
+    opacity: 0.3;
+  }
 }
 </style>
