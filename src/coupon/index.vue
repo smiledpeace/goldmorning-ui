@@ -88,6 +88,7 @@ export default {
 
 <style lang="less" rel="stylesheet/less" scoped>
 @activity-color: rgba(195, 37, 45, 0.05);
+@import '../style/var';
 .flex-column-center() {
   display: flex;
   flex-direction: column;

@@ -80,6 +80,7 @@ export default {
 </script>
 
 <style lang="less" rel="stylesheet/less" scoped>
+@import '../../style/base';
 .mb8 {
   margin-bottom: 8px;
 }

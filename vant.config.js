@@ -30,10 +30,6 @@ module.exports = {
         title: '基础组件',
         items: [
           {
-            path: 'button',
-            title: 'GmButton 按钮',
-          },
-          {
             path: 'coupon',
             title: 'Coupon 优惠券',
           },
