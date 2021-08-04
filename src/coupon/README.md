@@ -115,7 +115,7 @@ border 属性主要针对选择和展示界面。默认为展示的状态。选�
 | describe   | 描述               | _string_           | -       |
 | expired    | 有效时间           | _string_           | -       |
 | state      | 优惠券状态         | _string_           | -       |
-| border     | 是否显示框线       | _string_           | `false` |
+| border     | 是否显示框线       | _boolean_          | `false` |
 | btnText    | 按钮文案           | _string_           | 去使用  |
 | v-model    | 当 CheckBox 时使用 | _boolean_          | -       |
 | isCheckBox | 是否为 checkbox    | _boolean_          | -       |
