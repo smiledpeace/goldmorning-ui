@@ -3,7 +3,7 @@
 -->
 <template>
   <demo-block title="基础用法">
-    <div class="color-white p12">
+    <div class="bg p12">
       <coupon
         unit="嘿"
         amount="0.4"
@@ -15,7 +15,7 @@
   </demo-block>
 
   <demo-block title="可交易状态">
-    <div class="color-white p12">
+    <div class="bg p12">
       <coupon
         class="mb8"
         state="可交易"
@@ -27,7 +27,7 @@
   </demo-block>
 
   <demo-block title="isCheckBox">
-    <div class="color-white p12">
+    <div class="bg p12">
       <coupon
         class="mb8"
         state="可交易"
@@ -42,7 +42,7 @@
   </demo-block>
 
   <demo-block title="参数变化">
-    <div class="color-white p12">
+    <div class="bg-white p12">
       <coupon
         state="可成交"
         amount="0.5"
@@ -51,6 +51,7 @@
         title="卖金优惠券"
         unit="元/g"
         expired="2020.05.21-2021.06.31"
+        mask-color="#fff"
       />
     </div>
   </demo-block>
@@ -80,7 +81,12 @@ export default {
 </script>
 
 <style lang="less" rel="stylesheet/less" scoped>
-@import '../../style/base';
+.bg {
+  background-color: #ebedf0;
+}
+.bg-white {
+  background-color: #fff;
+}
 .mb8 {
   margin-bottom: 8px;
 }

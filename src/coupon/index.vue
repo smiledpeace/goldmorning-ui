@@ -10,8 +10,14 @@
       </div>
       <div class="coupon-unit">单位：{{ unit }}</div>
     </div>
-    <div class="coupon-mask" :class="{ checked: modelValue }">
+    <div
+      class="coupon-mask"
+      :style="couponMaskStyle"
+      :class="{ checked: modelValue }"
+    >
+      <div class="coupon-mask--before" :style="beforeBc"></div>
       <div class="coupon-mask--line"></div>
+      <div class="coupon-mask--after" :style="beforeBc"></div>
     </div>
     <div class="coupon-right">
       <div class="coupon-info">
@@ -41,6 +47,8 @@
 </template>
 
 <script>
+import { computed } from 'vue';
+
 export default {
   name: 'Coupon',
   components: {},
@@ -65,6 +73,7 @@ export default {
     isCheckBox: Boolean,
     modelValue: Boolean,
     disabled: Boolean,
+    maskColor: String,
   },
   emits: ['update:modelValue', 'change', 'click'],
   setup(props, { emit }) {
@@ -77,8 +86,24 @@ export default {
     function onClick(evt) {
       emit('click', evt);
     }
+    // 颜色可变
+    const couponMaskStyle = computed(() => {
+      return {
+        color: props.maskColor || '#EBEDF0',
+      };
+    });
+
+    const beforeBc = computed(() => {
+      return {
+        'border-color': props.maskColor
+          ? 'rgba(211, 211, 211, .5)'
+          : 'transparent',
+      };
+    });
 
     return {
+      couponMaskStyle,
+      beforeBc,
       onChange,
       onClick,
     };
@@ -168,21 +193,22 @@ export default {
     height: 100%;
   }
 
-  &::before,
-  &::after {
+  &--before,
+  &--after {
     content: '';
     width: 12px;
     height: 12px;
     position: absolute;
     border-radius: 50%;
-    border: 1px solid rgba(221, 221, 221, 0.5);
-    background-color: #fff;
+    border-width: 1px;
+    border-style: solid;
+    background-color: currentColor;
     transition: all 0.3s ease;
   }
-  &::before {
+  &--before {
     top: -6px;
   }
-  &::after {
+  &--after {
     bottom: -6px;
   }
 
