@@ -2,7 +2,10 @@
  *Author: Smiledpeace
 -->
 <template>
-  <label class="coupon" :class="{ checked: modelValue, border: border }">
+  <label
+    class="coupon"
+    :class="{ checked: modelValue, border: border, disabled }"
+  >
     <div class="coupon-left">
       <div class="coupon-offer">
         <span class="coupon-symbol">{{ symbol }}</span>
@@ -38,12 +41,14 @@
       <button
         class="coupon-btn"
         @click="onClick"
+        :disabled="disabled"
         v-if="showButton && !isCheckBox"
       >
         {{ btnText }}
       </button>
     </div>
     <span class="coupon-state" v-if="state">{{ state }}</span>
+    <!--    <span class="disabled-img" v-if="disabled"></span>-->
   </label>
 </template>
 
@@ -117,6 +122,10 @@ export default {
     radial-gradient(circle at 104px 82px, transparent 6px, red 0);
   -webkit-mask-composite: destination-in; /* chrome */
   mask-composite: intersect; /* Firefox */
+
+  &.disabled {
+    opacity: 0.4;
+  }
   &.border {
     &::after {
       border: 1px solid #eee;
@@ -292,7 +301,21 @@ export default {
   position: absolute;
   visibility: hidden;
   &:disabled + .coupon-checkbox {
-    opacity: 0.3;
+    background-color: #eee;
+    border-radius: 50%;
+    background-image: none;
   }
+}
+.disabled-img {
+  background-image: url('https://gm-itrade-1255882558.cos.ap-guangzhou.myqcloud.com/GM_ITRADE/base/20210804/1750373nqao6.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  height: 72px;
+  width: 72px;
+  right: 40px;
+  top: 10px;
+  z-index: 3;
 }
 </style>
