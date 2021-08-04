@@ -2,7 +2,7 @@
  *Author: Smiledpeace
 -->
 <template>
-  <label class="coupon" :class="{ checked: modelValue }">
+  <label class="coupon" :class="{ checked: modelValue, border: border }">
     <div class="coupon-left">
       <div class="coupon-offer">
         <span class="coupon-symbol">{{ symbol }}</span>
@@ -10,14 +10,10 @@
       </div>
       <div class="coupon-unit">单位：{{ unit }}</div>
     </div>
-    <div
-      class="coupon-mask"
-      :style="couponMaskStyle"
-      :class="{ checked: modelValue }"
-    >
-      <div class="coupon-mask--before" :style="beforeBc"></div>
+    <div class="coupon-mask" :class="{ checked: modelValue }">
+      <div class="coupon-mask--before" v-if="border"></div>
       <div class="coupon-mask--line"></div>
-      <div class="coupon-mask--after" :style="beforeBc"></div>
+      <div class="coupon-mask--after" v-if="border"></div>
     </div>
     <div class="coupon-right">
       <div class="coupon-info">
@@ -39,15 +35,20 @@
         <span class="coupon-checkbox" :class="{ checked: modelValue }"></span>
       </template>
 
-      <button class="coupon-btn" @click="onClick" v-else>{{ btnText }}</button>
+      <button
+        class="coupon-btn"
+        @click="onClick"
+        v-if="showButton && !isCheckBox"
+      >
+        {{ btnText }}
+      </button>
     </div>
-
     <span class="coupon-state" v-if="state">{{ state }}</span>
   </label>
 </template>
 
 <script>
-import { computed } from 'vue';
+import { trueProp } from '../utils/const';
 
 export default {
   name: 'Coupon',
@@ -73,7 +74,8 @@ export default {
     isCheckBox: Boolean,
     modelValue: Boolean,
     disabled: Boolean,
-    maskColor: String,
+    showButton: trueProp,
+    border: Boolean,
   },
   emits: ['update:modelValue', 'change', 'click'],
   setup(props, { emit }) {
@@ -86,24 +88,8 @@ export default {
     function onClick(evt) {
       emit('click', evt);
     }
-    // 颜色可变
-    const couponMaskStyle = computed(() => {
-      return {
-        color: props.maskColor || '#EBEDF0',
-      };
-    });
-
-    const beforeBc = computed(() => {
-      return {
-        'border-color': props.maskColor
-          ? 'rgba(211, 211, 211, .5)'
-          : 'transparent',
-      };
-    });
 
     return {
-      couponMaskStyle,
-      beforeBc,
       onChange,
       onClick,
     };
@@ -127,6 +113,16 @@ export default {
   overflow: hidden;
   background-color: var(--color-white);
   font-family: var(--family);
+  -webkit-mask-image: radial-gradient(circle at 104px 0, transparent 6px, red 0),
+    radial-gradient(circle at 104px 82px, transparent 6px, red 0);
+  -webkit-mask-composite: destination-in; /* chrome */
+  mask-composite: intersect; /* Firefox */
+  &.border {
+    &::after {
+      border: 1px solid #eee;
+    }
+  }
+
   &::after {
     content: '';
     position: absolute;
@@ -135,14 +131,13 @@ export default {
     left: 0;
     right: 0;
     bottom: 0;
-    border: 1px solid #eee;
     border-radius: 6px;
     transition: all 0.3s ease;
   }
   &.checked {
     &::after {
       background-color: @activity-color;
-      border-color: @activity-color;
+      border-color: rgba(195, 37, 45, 0.5);
     }
   }
 }
@@ -200,9 +195,7 @@ export default {
     height: 12px;
     position: absolute;
     border-radius: 50%;
-    border-width: 1px;
-    border-style: solid;
-    background-color: currentColor;
+    border: 1px solid rgba(211, 211, 211, 0.5);
     transition: all 0.3s ease;
   }
   &--before {
@@ -213,9 +206,9 @@ export default {
   }
 
   &.checked {
-    &::before,
-    &::after {
-      border-color: rgba(195, 37, 45, 0.1);
+    .coupon-mask--before,
+    .coupon-mask--after {
+      border-color: rgba(195, 37, 45, 0.5);
     }
   }
 }

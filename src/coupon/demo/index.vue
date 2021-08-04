@@ -27,7 +27,7 @@
   </demo-block>
 
   <demo-block title="isCheckBox">
-    <div class="bg p12">
+    <div class="bg-white p12">
       <coupon
         class="mb8"
         state="可交易"
@@ -37,6 +37,7 @@
         @change="onChange"
         title="卖金优惠券"
         expired="2020.05.21-2021.06.31"
+        border
       />
     </div>
   </demo-block>
@@ -51,7 +52,23 @@
         title="卖金优惠券"
         unit="元/g"
         expired="2020.05.21-2021.06.31"
-        mask-color="#fff"
+        border
+      />
+    </div>
+  </demo-block>
+
+  <demo-block title="不显示按钮">
+    <div class="bg-gold p12">
+      <coupon
+        state="可成交"
+        amount="0.5"
+        symbol="-"
+        btn-text="去消费"
+        title="卖金优惠券"
+        unit="元/g"
+        expired="2020.05.21-2021.06.31"
+        mask-color="#FFF7EA"
+        :show-button="false"
       />
     </div>
   </demo-block>
@@ -92,5 +109,8 @@ export default {
 }
 .p12 {
   padding: 12px;
+}
+.bg-gold {
+  background: linear-gradient(137deg, #fff7ea 0%, #ffeccd 100%);
 }
 </style>

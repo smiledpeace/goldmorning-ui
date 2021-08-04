@@ -69,24 +69,57 @@ export default {
 
 ### 参数变化
 
+border 属性主要针对选择和展示界面。默认为展示的状态。选择界面需要将 border 设置为 true。
+
+```html
+<coupon
+  state="可成交"
+  amount="0.5"
+  symbol="-"
+  btn-text="去消费"
+  title="卖金优惠券"
+  unit="元/g"
+  expired="2020.05.21-2021.06.31"
+  border
+/>
+```
+
+### 不显示按钮
+
+默认展示按钮，设置 show-button 为 false 则不展示。
+
+```html
+<coupon
+  state="可成交"
+  amount="0.5"
+  symbol="-"
+  btn-text="去消费"
+  title="卖金优惠券"
+  unit="元/g"
+  expired="2020.05.21-2021.06.31"
+  mask-color="#FFF7EA"
+  :show-button="false"
+/>
+```
+
 ## API
 
 ### Props
 
-| 参数       | 说明               | 类型               | 默认值    |
-| ---------- | ------------------ | ------------------ | --------- |
-| title      | 优惠券的描述       | _string_           | -         |
-| amount     | 优惠金额           | _number \| string_ | -         |
-| symbol     | 优惠符号 是+还是-  | _string_           | +         |
-| unit       | 单位               | _string_           | 元/克     |
-| describe   | 描述               | _string_           | -         |
-| expired    | 有效时间           | _string_           | -         |
-| state      | 优惠券状态         | _string_           | -         |
-| maskColor  | 半圆背景色         | _string_           | `#EBEDF0` |
-| btnText    | 按钮文案           | _string_           | 去使用    |
-| v-model    | 当 CheckBox 时使用 | _boolean_          | -         |
-| isCheckBox | 是否为 checkbox    | _boolean_          | -         |
-| disabled   | 是否禁用 checkbox  | _boolean_          | 克        |
+| 参数       | 说明               | 类型               | 默认值  |
+| ---------- | ------------------ | ------------------ | ------- |
+| title      | 优惠券的描述       | _string_           | -       |
+| amount     | 优惠金额           | _number \| string_ | -       |
+| symbol     | 优惠符号 是+还是-  | _string_           | +       |
+| unit       | 单位               | _string_           | 元/克   |
+| describe   | 描述               | _string_           | -       |
+| expired    | 有效时间           | _string_           | -       |
+| state      | 优惠券状态         | _string_           | -       |
+| border     | 是否显示框线       | _string_           | `false` |
+| btnText    | 按钮文案           | _string_           | 去使用  |
+| v-model    | 当 CheckBox 时使用 | _boolean_          | -       |
+| isCheckBox | 是否为 checkbox    | _boolean_          | -       |
+| disabled   | 是否禁用 checkbox  | _boolean_          | 克      |
 
 ### Events
 
