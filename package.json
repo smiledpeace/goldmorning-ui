@@ -1,11 +1,14 @@
 {
   "name": "goldmorning-ui",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "style": "lib/index.css",
   "main": "lib/index.js",
   "module": "es/index.js",
-  "files": ["es", "lib"],
+  "files": [
+    "es",
+    "lib"
+  ],
   "scripts": {
     "dev": "vant-cli dev",
     "test": "vant-cli test",
