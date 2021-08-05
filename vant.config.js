@@ -1,4 +1,3 @@
-const year = new Date().getFullYear();
 module.exports = {
   name: 'goldmorning-ui',
   build: {
@@ -42,6 +41,6 @@ module.exports = {
     ],
   },
   devServer: {
-    port: year,
+    port: 2021,
   },
 };

@@ -84,6 +84,26 @@ border 属性主要针对选择和展示界面。默认为展示的状态。选�
 />
 ```
 
+### disabled 状态
+
+当为默认状态 disabled 时不显示按钮。CheckBox disabled 状态时，选项置灰。
+
+```html
+<coupon
+  state="可成交"
+  amount="0.5"
+  symbol="-"
+  btn-text="去消费"
+  title="卖金优惠券"
+  unit="元/g"
+  expired="2020.05.21-2021.06.31"
+  border
+  disabled
+  is-check-box
+  @click="onClick"
+/>
+```
+
 ### 不显示按钮
 
 默认展示按钮，设置 show-button 为 false 则不展示。

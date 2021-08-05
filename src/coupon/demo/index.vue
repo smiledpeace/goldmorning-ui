@@ -53,14 +53,12 @@
         unit="元/g"
         expired="2020.05.21-2021.06.31"
         border
-        disabled
-        :show-button="false"
         @click="onClick"
       />
     </div>
   </demo-block>
 
-  <demo-block title="参数变化">
+  <demo-block title="disable状态">
     <div class="bg-white p12">
       <coupon
         state="可成交"
