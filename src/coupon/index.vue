@@ -2,51 +2,53 @@
  *Author: Smiledpeace
 -->
 <template>
-  <label
-    class="coupon"
-    :class="{ checked: modelValue, border: border, disabled }"
-  >
-    <div class="coupon-left">
-      <div class="coupon-offer">
-        <span class="coupon-symbol">{{ symbol }}</span>
-        <span class="coupon-amount">{{ amount }}</span>
-      </div>
-      <div class="coupon-unit">单位：{{ unit }}</div>
-    </div>
-    <div class="coupon-mask" :class="{ checked: modelValue }">
-      <div class="coupon-mask--before" v-if="border"></div>
-      <div class="coupon-mask--line"></div>
-      <div class="coupon-mask--after" v-if="border"></div>
-    </div>
-    <div class="coupon-right">
-      <div class="coupon-info">
-        <h3 class="coupon-title" :class="{ mb4: !describe }">{{ title }}</h3>
-        <div class="coupon-describe" :class="{ describe: describe }">
-          {{ describe }}
+  <label class="coupon-container">
+    <div
+      class="coupon"
+      :class="{ checked: modelValue, border: border, disabled }"
+    >
+      <div class="coupon-left">
+        <div class="coupon-offer">
+          <span class="coupon-symbol">{{ symbol }}</span>
+          <span class="coupon-amount">{{ amount }}</span>
         </div>
-        <div class="coupon-expired">{{ expired }}</div>
+        <div class="coupon-unit">单位：{{ unit }}</div>
       </div>
-      <!--   是否使用check   -->
-      <template v-if="isCheckBox">
-        <input
-          type="checkbox"
-          class="coupon-input-checkbox"
-          @change="onChange"
-          :value="modelValue"
-          :disabled="disabled"
-        />
-        <span class="coupon-checkbox" :class="{ checked: modelValue }"></span>
-      </template>
+      <div class="coupon-mask" :class="{ checked: modelValue }">
+        <div class="coupon-mask--before" v-if="border"></div>
+        <div class="coupon-mask--line"></div>
+        <div class="coupon-mask--after" v-if="border"></div>
+      </div>
+      <div class="coupon-right">
+        <div class="coupon-info">
+          <h3 class="coupon-title" :class="{ mb4: !describe }">{{ title }}</h3>
+          <div class="coupon-describe" :class="{ describe: describe }">
+            {{ describe }}
+          </div>
+          <div class="coupon-expired">{{ expired }}</div>
+        </div>
+        <!--   是否使用check   -->
+        <template v-if="isCheckBox">
+          <input
+            type="checkbox"
+            class="coupon-input-checkbox"
+            @change="onChange"
+            :value="modelValue"
+            :disabled="disabled"
+          />
+          <span class="coupon-checkbox" :class="{ checked: modelValue }"></span>
+        </template>
 
-      <button
-        class="coupon-btn"
-        @click="onClick"
-        v-if="showButton && !isCheckBox && !disabled"
-      >
-        {{ btnText }}
-      </button>
+        <button
+          class="coupon-btn"
+          @click="onClick"
+          v-if="showButton && !isCheckBox && !disabled"
+        >
+          {{ btnText }}
+        </button>
+      </div>
+      <span class="coupon-state" v-if="state">{{ state }}</span>
     </div>
-    <span class="coupon-state" v-if="state">{{ state }}</span>
   </label>
 </template>
 
@@ -108,10 +110,15 @@ export default {
   flex-direction: column;
   justify-content: center;
 }
+.coupon-container {
+  height: 82px;
+  display: block;
+  border-radius: 6px;
+  overflow: hidden;
+}
 .coupon {
   display: flex;
-  height: 82px;
-  border-radius: 6px;
+  height: 100%;
   position: relative;
   overflow: hidden;
   background-color: var(--color-white);
