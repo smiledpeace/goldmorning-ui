@@ -204,13 +204,13 @@ export default {
 
   &--before,
   &--after {
-    content: '';
     width: 12px;
     height: 12px;
     position: absolute;
     border-radius: 50%;
     border: 1px solid rgba(211, 211, 211, 0.5);
     transition: all 0.3s ease;
+    box-sizing: content-box;
   }
   &--before {
     top: -6px;
